@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--该日志将日志级别不同的log信息保存到不同的文件中 -->
 <configuration>
-    <springProperty scope="context" name="SafeLogPath" source="log.safe.path" />
     <springProperty scope="context" name="LogPath" source="log.path" />
     <springProperty scope="context" name="bootstrapServers" source="bootstrap.servers"/>\
     <property name="springAppName" value="javastudy"/>
@@ -15,9 +14,6 @@
 
     <!-- 输出成日志文件的样式 -->
     <property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%X{logId}] ${PID} [%thread] %logger{64} - %msg" />
-
-    <!-- 安全日志文件的样式 -->
-    <property name="SAFE_LOG_PATTERN" value="%msg%n" />
 
     <!-- 控制台输出 -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
@@ -84,35 +80,15 @@
         </filter>
     </appender>
 
-    <!-- 安全JSON日志 -->
-    <appender name="SAFE_LOG_JSON" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!-- 按天回滚 daily -->
-            <fileNamePattern>${SafeLogPath}/oper_%d{yyyy-MM-dd}.log</fileNamePattern>
-            <!-- 日志最大的历史 60天 -->
-            <maxHistory>60</maxHistory>
-        </rollingPolicy>
-        <!-- 日志输出编码 -->
-        <encoder>
-            <pattern>${SAFE_LOG_PATTERN}</pattern>
-            <charset>utf8</charset>
-        </encoder>
-        <filter class="ch.qos.logback.classic.filter.LevelFilter">
-            <onMatch>ACCEPT</onMatch>
-            <onMismatch>DENY</onMismatch>
-        </filter>
-    </appender>
 
     <!--日志打印的包的范围，及分类日志文件存储 -->
-    <logger name="cn.xdf" additivity="true" level="INFO">
+    <logger name="com.rfs" additivity="true" level="INFO">
         <appender-ref ref="LOG_JSON" />
     </logger>
     <logger name="io.lettuce.core.protocol" level="ERROR">
         <appender-ref ref="LOG_JSON" />
     </logger>
-    <logger name="cn.xdf.baoming.util.SafeLoggerUtil" level="DEBUG">
-        <appender-ref ref="SAFE_LOG_JSON" />
-    </logger>
+
     <!-- 日志输出级别 -->
     <root level="INFO">
         <appender-ref ref="CONSOLE" />
