@@ -1,4 +1,4 @@
-package com.rfs.javastudy.singleton;
+package com.rfs.javastudy.demo.singleton;
 
 /**
  * @author: rfs
