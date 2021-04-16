@@ -6,8 +6,6 @@ import com.rfs.javastudy.config.MQConfiguration;
 import com.rfs.javastudy.constant.ResponseCodeConst;
 import com.rfs.javastudy.exceptions.MQSendFailException;
 import com.rfs.javastudy.utils.XLoggerUtil;
-import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.rocketmq.client.exception.MQBrokerException;
 import org.apache.rocketmq.client.exception.MQClientException;
@@ -30,7 +28,7 @@ public class RMQProducer {
     private MQConfiguration mqConfiguration;
     private DefaultMQProducer producer;
 
-    private Retryer producerRetryer = RetryerBuilder.newBuilder()
+    private Retryer producerRetry = RetryerBuilder.newBuilder()
             .retryIfExceptionOfType(MQSendFailException.class)
             .withWaitStrategy(WaitStrategies.incrementingWait(1L, TimeUnit.SECONDS,1L,TimeUnit.SECONDS))
             .withStopStrategy(StopStrategies.stopAfterAttempt(3))
@@ -58,7 +56,7 @@ public class RMQProducer {
      */
     public <T> void sentMessage(T data, String topic, String keys, String tags) {
         String content = JSON.toJSONString(data);
-        XLoggerUtil.info("will send rmq, topic is:{"+topic+"}, keys is:{"+keys+"}, data is :{"+content+"}");
+        XLoggerUtil.info("发送mq消息, topic is:{"+topic+"}, keys is:{"+keys+"}, data is :{"+content+"}");
         Message message = new Message();
         message.setBody(content.getBytes());
         message.setTopic(topic);
@@ -69,7 +67,7 @@ public class RMQProducer {
             message.setTags(tags);
         }
         try {
-            producerRetryer.call(() -> {
+            producerRetry.call(() -> {
                 sentMessage(message);
                 return null;
             });
@@ -82,7 +80,7 @@ public class RMQProducer {
 
     public void sentMessageWithRetry(Message message) {
         try {
-            producerRetryer.call(() -> {
+            producerRetry.call(() -> {
                 sentMessage(message);
                 return null;
             });
