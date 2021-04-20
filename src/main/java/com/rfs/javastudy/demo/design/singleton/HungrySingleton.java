@@ -1,4 +1,4 @@
-package com.rfs.javastudy.demo.singleton;
+package com.rfs.javastudy.demo.design.singleton;
 
 import java.lang.reflect.Constructor;
 
