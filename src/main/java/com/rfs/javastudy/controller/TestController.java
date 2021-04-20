@@ -1,5 +1,6 @@
 package com.rfs.javastudy.controller;
 
+import cn.hutool.core.date.DateUtil;
 import com.rfs.javastudy.config.MQConfiguration;
 import com.rfs.javastudy.demo.mq.RMQProducer;
 import com.rfs.javastudy.dto.OrderStateChangeMQDto;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/test")
@@ -22,15 +25,16 @@ public class TestController {
         return "123";
     }
     @GetMapping("/sendmq")
-    public String sendMq(){
+    public String sendMq(String tag){
         OrderStateChangeMQDto orderStateChangeMQDto = OrderStateChangeMQDto.builder()
                 .orderId(100L)
                 .sysCode(18)
                 .state(1)
                 .userId(1L)
+                .createTime(DateUtil.date())
                 .build();
 
-        rmqProducer.sentMessage(orderStateChangeMQDto,mqConfiguration.getOrderStateChangeTopic(),String.valueOf(orderStateChangeMQDto.getOrderId()),"1");
+        rmqProducer.sentMessage(orderStateChangeMQDto,mqConfiguration.getOrderStateChangeTopic(),String.valueOf(orderStateChangeMQDto.getOrderId()),tag);
         return "ok";
     }
 }

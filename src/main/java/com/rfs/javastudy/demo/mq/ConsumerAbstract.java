@@ -1,5 +1,6 @@
 package com.rfs.javastudy.demo.mq;
 
+import com.rfs.javastudy.utils.XLoggerUtil;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
@@ -15,7 +16,6 @@ import javax.annotation.PostConstruct;
 * @create: 2021/4/15
 * @description: 消费者模板类，所有消费者继承模板
 **/
-@Slf4j
 public abstract class ConsumerAbstract {
 
     protected abstract MessageListenerConcurrently listener();
@@ -35,7 +35,7 @@ public abstract class ConsumerAbstract {
         consumer.setConsumeThreadMin(config.threadMin);
         consumer.setConsumeThreadMax(config.threadMax);
         consumer.registerMessageListener(listener());
-        log.info("consumer start success, topic is:{}, group is:{}", config.topic, config.group);
+        XLoggerUtil.info("consumer start success, topic is:{"+config.topic+"}, group is:{"+ config.group+"}");
         consumer.start();
     }
 

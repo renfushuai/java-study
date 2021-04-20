@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -26,5 +28,5 @@ public class OrderStateChangeMQDto {
      * 订单当前状态
      */
     private Integer state;
-
+    private Date createTime;
 }

@@ -31,6 +31,7 @@ public class ResponseCodeConst {
     public static ResponseCodeConst JSON_FORMAT_ERROR = new ResponseCodeConst(115, "JSON格式错误");
     public static ResponseCodeConst REDIS_ERROR = new ResponseCodeConst(116, "Redis错误");
     public static ResponseCodeConst SEND_MQ_ERROR = new ResponseCodeConst(117, "发送mq失败");
+    public static ResponseCodeConst CONSUMER_MQ_ERROR = new ResponseCodeConst(118, "消费mq失败");
     protected int code;
 
     protected String msg;
