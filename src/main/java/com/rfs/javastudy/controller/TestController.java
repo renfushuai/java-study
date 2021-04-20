@@ -1,6 +1,8 @@
 package com.rfs.javastudy.controller;
 
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.RandomUtil;
+import com.alibaba.fastjson.JSON;
 import com.rfs.javastudy.config.MQConfiguration;
 import com.rfs.javastudy.demo.mq.RMQProducer;
 import com.rfs.javastudy.dto.OrderStateChangeMQDto;
@@ -25,9 +27,9 @@ public class TestController {
         return "123";
     }
     @GetMapping("/sendmq")
-    public String sendMq(String tag){
+    public OrderStateChangeMQDto sendMq(String tag){
         OrderStateChangeMQDto orderStateChangeMQDto = OrderStateChangeMQDto.builder()
-                .orderId(100L)
+                .orderId(RandomUtil.randomLong(0,100000))
                 .sysCode(18)
                 .state(1)
                 .userId(1L)
@@ -35,6 +37,6 @@ public class TestController {
                 .build();
 
         rmqProducer.sentMessage(orderStateChangeMQDto,mqConfiguration.getOrderStateChangeTopic(),String.valueOf(orderStateChangeMQDto.getOrderId()),tag);
-        return "ok";
+        return orderStateChangeMQDto;
     }
 }

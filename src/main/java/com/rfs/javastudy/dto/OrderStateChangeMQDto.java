@@ -1,5 +1,7 @@
 package com.rfs.javastudy.dto;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,5 +30,6 @@ public class OrderStateChangeMQDto {
      * 订单当前状态
      */
     private Integer state;
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 }
