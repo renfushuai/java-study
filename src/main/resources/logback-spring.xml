@@ -47,7 +47,6 @@
                         "Code": "#asLong{%X{code:-0}}",
                         "systemName": "${springAppName}",
                         "Msg": "%X{msg}",
-                        "subSystemName": "%X{businessType}",
                         "url": "%X{uriPath}",
                         "param": "%X{requestParam}",
                         "appId": "0",
@@ -64,10 +63,6 @@
                         },
                         "tag": "%X{tag}",
                         "traceInfo": "%X{traceInfo}",
-                        "logattr": "#asLong{%X{logAttr:-0}}",
-                        "SchoolId": "#asLong{%X{schoolId:-0}}",
-                        "BizCode": " ",
-                        "Keys": "%X{keys}",
                         "guid": "%X{logId}"
                         }
                     </pattern>
