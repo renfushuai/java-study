@@ -9,10 +9,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
-import com.sun.istack.internal.NotNull;
 import net.logstash.logback.encoder.org.apache.commons.lang.math.NumberUtils;
 import org.springframework.util.StringUtils;
-
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
