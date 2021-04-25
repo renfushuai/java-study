@@ -1,9 +1,8 @@
 package com.rfs.javastudy;
 
-import cn.hutool.extra.spring.SpringUtil;
-import com.rfs.javastudy.demo.design.abstractfactory.EnumShareType;
-import com.rfs.javastudy.demo.design.abstractfactory.Share;
-import com.rfs.javastudy.demo.design.abstractfactory.ShareFactory;
+import com.rfs.javastudy.modules.study.design.abstractfactory.EnumShareType;
+import com.rfs.javastudy.modules.study.design.abstractfactory.Share;
+import com.rfs.javastudy.modules.study.design.abstractfactory.ShareFactory;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
