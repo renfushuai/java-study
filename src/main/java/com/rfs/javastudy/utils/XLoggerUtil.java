@@ -74,6 +74,19 @@ public class XLoggerUtil {
             log.error("XLoggerUtil.errorLog do record error", ee);
         }
     }
+    public static void error(String msg) {
+        try {
+            MDC.put("code", String.valueOf(ResponseCodeConst.SYSTEM_ERROR.getCode()));
+            MDC.put("status","0");
+            MDC.put("msg", msg);
+            log.info(msg);
+            MDC.remove("code");
+            MDC.remove("status");
+            MDC.remove("msg");
+        } catch (Exception ee) {
+            log.error("XLoggerUtil.errorLog do record error", ee);
+        }
+    }
     public static void info(String msg) {
         try {
             MDC.put("code", String.valueOf(ResponseCodeConst.SUCCESS.getCode()));
