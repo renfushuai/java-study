@@ -1,4 +1,4 @@
-package com.rfs.javastudy.modules.study;
+package com.rfs.javastudy.modules.study.string;
 
 import lombok.Data;
 

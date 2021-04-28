@@ -1,4 +1,4 @@
-package com.rfs.javastudy.modules.study.design.abstractfactory;
+package com.rfs.javastudy.modules.study.design.strategy;
 
 /**
 * @author: rfs
@@ -6,7 +6,8 @@ package com.rfs.javastudy.modules.study.design.abstractfactory;
 * @description: 分享类型
 **/
 public enum EnumShareType {
-    SUCCESS_ORDER("successOrder");
+    SUCCESS_ORDER("successOrder"),
+    PRODUCT("product");
     EnumShareType(String name){
         this.name=name;
     }

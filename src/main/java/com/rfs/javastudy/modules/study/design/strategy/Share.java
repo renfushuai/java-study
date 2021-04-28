@@ -1,4 +1,4 @@
-package com.rfs.javastudy.modules.study.design.abstractfactory;
+package com.rfs.javastudy.modules.study.design.strategy;
 
 public interface Share {
     /**

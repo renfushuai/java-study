@@ -5,7 +5,11 @@ import cn.hutool.core.util.StrUtil;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-
+/**
+* @author: rfs
+* @create: 2021/4/28
+* @description: 动态代理
+**/
 public class ProviderHandler implements InvocationHandler {
     Object target;
     public Object bind(Object target){

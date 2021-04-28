@@ -1,5 +1,10 @@
 package com.rfs.javastudy.modules.study.proxy;
 
+/**
+* @author: rfs
+* @create: 2021/4/28
+* @description: 静态代理
+**/
 public class ProviderProxy implements IProvider{
     IProvider provider;
     public ProviderProxy(IProvider provider){
