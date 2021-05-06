@@ -2,6 +2,8 @@ package com.rfs.javastudy.modules.study.string;
 
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class StringTest {
@@ -31,6 +33,10 @@ public class StringTest {
         System.out.println(buffer.toString());
         for (int i = 0; i < 10; i++) {
             System.out.println(ThreadLocalRandom.current().nextInt(100));;
+        }
+        List<Byte[]> list = new ArrayList<>();
+        while (true) {
+            list.add(new Byte[1024 * 1024]);//每次1M
         }
     }
 
