@@ -8,6 +8,9 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class StringTest {
     public static void main(String[] args) {
+        Integer u=null;
+        System.out.println(u.intValue()>0);
+
         String a = "hello2";
         final String b = "hello";
         String d = "hello";
