@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
  **/
 public class VolatileTest {
     // 这里还没有加volatile关键字
-    private static  boolean flag = true;
+    private static volatile boolean flag = true;
     public static void main(String[] args) throws Exception{
         new Thread(() -> {
             while (flag) {
