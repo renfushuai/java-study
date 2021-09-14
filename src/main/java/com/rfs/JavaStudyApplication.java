@@ -13,8 +13,5 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 public class JavaStudyApplication {
     public static void main(String[] args) {
         SpringApplication.run(JavaStudyApplication.class, args);
-        ApplicationContext annotationConfigWebApplicationContext = new AnnotationConfigWebApplicationContext();
-        Object ms = annotationConfigWebApplicationContext.getBean("ms");
-
     }
 }
