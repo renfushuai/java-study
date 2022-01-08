@@ -8,6 +8,8 @@ import lombok.ToString;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Data
 @NoArgsConstructor
@@ -20,6 +22,13 @@ public class Employee {
     public static void main(String[] args) {
         List<Employee> list= Arrays.asList(new Employee("张三",16),
                 new Employee("李四",20));
+        Optional<Employee> collect = list.stream().filter(employee -> employee.getAge() > 100).findFirst();
+        if (collect.isPresent()) {
+
+        }
+        for (Employee employee : list) {
+            System.out.println(employee);
+        }
         List<Employee> employees = filterEmployee(list, new MyPredicate<Employee>() {
             @Override
             public boolean test(Employee employee) {
