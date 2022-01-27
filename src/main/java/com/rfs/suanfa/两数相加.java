@@ -5,15 +5,6 @@ package com.rfs.suanfa;
  * @date 2021/10/14
  */
 public class 两数相加 {
-    public static class ListNode{
-        int val;
-        ListNode next;
-        ListNode(int val){this.val=val;}
-        ListNode(int val,ListNode next){
-            this.val=val;
-            this.next=next;
-        }
-    }
 
     public static void main(String[] args) {
 
@@ -23,8 +14,8 @@ public class 两数相加 {
         ListNode cur=pre;
         int carry=0;
         while (l1!=null||l2!=null){
-            int x=l1==null?0:l1.val;
-            int y=l2==null?0:l2.val;
+            int x=l1==null?0:l1.data;
+            int y=l2==null?0:l2.data;
             int sum=x+y+carry;
             //取商
             carry=sum/10;
