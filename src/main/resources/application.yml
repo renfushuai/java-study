@@ -3,7 +3,7 @@ server:
 log:
   path: ./
 rmq:
-  nameserver: 10.3.246.190:9876
+  nameserver: 172.21.0.2:9876;172.21.0.2:9877
   producer:
     groupname: rfs-test-producer-group
     topics:

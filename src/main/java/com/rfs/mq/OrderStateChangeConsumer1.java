@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 * @create: 2021/4/15
 * @description: 订单状态变更消费者
 **/
-@Service
+//@Service
 public  class OrderStateChangeConsumer1 extends ConsumerAbstract {
     @Value("${rmq.consumer.topics.orderStateChange}")
     private String topic;
